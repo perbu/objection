@@ -1,0 +1,46 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+# The whole twine thing is documented here: https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python?view=azure-devops
+
+trigger:
+  branches:
+    include:
+    - '*'
+    - 'refs/tags/*'
+  paths:
+    exclude:
+    - README.md
+    - LICENSE
+    - .gitignore
+
+pool:
+  vmImage: 'ubuntu-latest'
+strategy:
+  matrix:
+#    Python36:
+#      python.version: '3.6'
+    Python37:
+      python.version: '3.7'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+  displayName: 'Use Python $(python.version)'
+
+- script: |
+    set -x
+    python -m pip install --upgrade pip
+    pip install poetry
+    poetry config repositories.azure $PIP_EXTRA_INDEX_URL
+    poetry install
+  displayName: 'Install dependencies'
+
+- script: |
+    # pip install pytest pytest-azurepipelines pytest-cov
+    poetry run pytest --cov=. --cov-report=xml --cov-report=html
+  displayName: 'Testing'
+
