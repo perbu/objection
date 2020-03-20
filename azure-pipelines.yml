@@ -40,9 +40,13 @@ steps:
     set -x
     python -m pip install --upgrade pip
     pip install poetry
+  displayName: 'Install poetry'
+
+- script: |
     poetry config repositories.azure $PIP_EXTRA_INDEX_URL
     poetry install
-  displayName: 'Install dependencies'
+  displayName: 'Poetry install'
+
 
 - script: |
     # pip install pytest pytest-azurepipelines pytest-cov
