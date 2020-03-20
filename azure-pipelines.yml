@@ -37,19 +37,15 @@ steps:
 
 
 - script: |
-    set -x
     python -m pip install --upgrade pip
     pip install poetry
   displayName: 'Install poetry'
 
 - script: |
-    poetry config repositories.azure $PIP_EXTRA_INDEX_URL
     poetry install
   displayName: 'Poetry install'
 
-
 - script: |
-    # pip install pytest pytest-azurepipelines pytest-cov
     poetry run pytest --cov=. --cov-report=xml --cov-report=html
   displayName: 'Testing'
 

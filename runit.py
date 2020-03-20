@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from py_objectstore import ArkivverketObjectStorage , MakeIterIntoFile
 
 __version__ = '0.0.1'
 

@@ -8,7 +8,7 @@ authors = ["Per Buer <per.buer@gmail.com>"]
 python = "^3.7"
 keyring = "^21.2.0"
 artifacts-keyring = "^0.2.9"
-
+py-objectstore = "^0.2.3"
 
 # extra-index-url=https://pkgs.dev.azure.com/arkivverket/Meta/_packaging/twine-feed/pypi/simple/
 
