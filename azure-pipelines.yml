@@ -42,7 +42,8 @@ steps:
   displayName: 'Install poetry'
 
 - script: |
-  env
+    env
+  displayName: 'bleh.'
 
 # - script: |
 #     poetry install
