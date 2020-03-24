@@ -42,10 +42,13 @@ steps:
   displayName: 'Install poetry'
 
 - script: |
-    poetry install
-  displayName: 'Poetry install'
+  env
 
-- script: |
-    poetry run pytest --cov=. --cov-report=xml --cov-report=html
-  displayName: 'Testing'
+# - script: |
+#     poetry install
+#   displayName: 'Poetry install'
+
+# - script: |
+#     poetry run pytest --cov=. --cov-report=xml --cov-report=html
+#   displayName: 'Testing'
 
